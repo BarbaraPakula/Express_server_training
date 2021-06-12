@@ -8,6 +8,22 @@ const app = express();
 app.engine('.hbs', hbs());
 app.set('view engine', '.hbs');
 
+app.use(express.urlencoded({ extended: false }));
+
+app.post('/contact/send-message', (req, res) => {
+
+  const { author, sender, title, message } = req.body;
+
+  if (author && sender && title && message) {
+    res.render('contact', { isSent: true });
+  }
+  else {
+    res.render('contact', { isError: true });
+  }
+
+});
+
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/hello/:name', (req, res) => {
@@ -19,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-  res.render('about', {layout: 'dark'});
+  res.render('about', { layout: 'dark' });
 });
 
 app.get('/contact', (req, res) => {
@@ -35,7 +51,7 @@ app.get('/history', (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname,'public/404.png'));
+  res.status(404).sendFile(path.join(__dirname, 'public/404.png'));
 })
 
 app.listen(8000, () => {
