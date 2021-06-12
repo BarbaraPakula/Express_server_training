@@ -1,26 +1,17 @@
 body {
-  background-color: #e5d8ed;
-  color: #29243d;
-}
-
-h1 {
-  font-weight: lighter;
-  font-style: italic;
-  color:#625d8c ;
+  background-color: #29243d;
+  color: #e5d8ed;
 }
 
 a {
   text-decoration: none;
   font-size: 20px;
   padding:0 5px;
-  color: #625d8c;
+  color: #a59de6;
   border: 1px solid  #a59de6;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
-}
-a:hover {
-  background-color:#a59de6;
 }
