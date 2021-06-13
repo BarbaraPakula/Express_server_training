@@ -1,30 +1,47 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('express-handlebars');
+const multer = require('multer');
 
+// Set Storage Engine
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'public/uploads/'),
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+const upload = multer({
+  storage: storage,
+});
 
 const app = express();
-
 app.engine('.hbs', hbs());
 app.set('view engine', '.hbs');
 
+app.use(express.static(path.join(__dirname, '/public')));
+
 app.use(express.urlencoded({ extended: false }));
 
-app.post('/contact/send-message', (req, res) => {
+app.post('/contact/send-message', upload.single('image'), (req, res) => {
+  const {
+    author,
+    sender,
+    title,
+    message,
+  } = req.body;
 
-  const { author, sender, title, message } = req.body;
-
-  if (author && sender && title && message) {
-    res.render('contact', { isSent: true });
+  if (author && sender && title && message && req.file) {
+    res.render('contact', {
+      isSent: true,
+      fileName: `uploads/${req.file.filename}`,
+    });
+  } else {
+    res.render('contact', {
+      isError: true
+    });
   }
-  else {
-    res.render('contact', { isError: true });
-  }
-
 });
-
-
-app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/hello/:name', (req, res) => {
   res.render('hello', { name: req.params.name });

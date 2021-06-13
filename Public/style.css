@@ -7,7 +7,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   padding: 30px;
   text-align: center;
-  
+
 }
 
 h1 {
@@ -34,6 +34,12 @@ a {
 }
 a:hover {
   background-color:#a59de6;
+}
+img{
+  width:50%;
+  height:50%;
+           -o-object-fit: cover;
+              object-fit: cover;
 }
 
 label {
@@ -110,6 +116,7 @@ button {
   padding: 0.9rem 0.8rem;
   margin: 1rem auto 1.5rem auto;
   display: flex;
+  flex-direction: column;
   opacity: 1;
   font-weight: lighter;
   box-shadow: 0 0 0 rgba(0,0,0,0.2);
@@ -119,9 +126,14 @@ button {
   color: #fff;
   border-color:#01916d;
   -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
   -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+          -webkit-animation-duration: 1s;
+                  animation-duration: 1s;
+  -webkit-border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;

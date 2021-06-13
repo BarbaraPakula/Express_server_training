@@ -1,6 +1,9 @@
 body {
   background-color: #29243d;
   color: #e5d8ed;
+  font-family: 'Open Sans', sans-serif;
+  padding: 30px;
+  text-align: center;
 }
 
 a {
